@@ -1,6 +1,6 @@
 /**
  * Component Exports
- * 
+ *
  * Central export file for all reusable components
  */
 
@@ -23,6 +23,9 @@ export type { ContainerProps } from "./Container"
 export { default as Navbar } from "./Navbar"
 export { MobileMenu } from "./MobileMenu"
 export { TabletMenu } from "./TabletMenu"
+
+export { HeroSection } from "./HeroSection"
+export type { HeroSectionProps } from "./HeroSection"
 
 export { Button } from "@/components/ui/button"
 export { Input } from "@/components/ui/input"
