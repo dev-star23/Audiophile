@@ -30,6 +30,9 @@ export type { HeroSectionProps } from "./HeroSection"
 export { CategoryCards } from "./CategoryCards"
 export type { CategoryCardsProps } from "./CategoryCards"
 
+export { ProductsSection } from "./ProductsSection"
+export type { ProductsSectionProps } from "./ProductsSection"
+
 export { Button } from "@/components/ui/button"
 export { Input } from "@/components/ui/input"
 export { Label } from "@/components/ui/label"

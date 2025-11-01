@@ -1,4 +1,4 @@
-import { HeroSection, CategoryCards } from "@/components"
+import { HeroSection, CategoryCards, ProductsSection } from "@/components"
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
         ctaHref="/product/xx99-mark-two-headphones"
       />
       <CategoryCards />
+      <ProductsSection />
     </main>
   )
 }
