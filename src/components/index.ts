@@ -27,6 +27,9 @@ export { TabletMenu } from "./TabletMenu"
 export { HeroSection } from "./HeroSection"
 export type { HeroSectionProps } from "./HeroSection"
 
+export { CategoryCards } from "./CategoryCards"
+export type { CategoryCardsProps } from "./CategoryCards"
+
 export { Button } from "@/components/ui/button"
 export { Input } from "@/components/ui/input"
 export { Label } from "@/components/ui/label"
