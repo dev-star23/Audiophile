@@ -32,7 +32,7 @@ const categories = [
 
 export function CategoryCards({ className }: CategoryCardsProps) {
   return (
-    <section className={cn("py-16 md:py-24", className)}>
+    <section className={cn("mt-16 md:mt-13 py-16 md:py-24", className)}>
       <Container>
         <div className="flex flex-col md:flex-row gap-16 md:gap-3 lg:gap-8">
           {categories.map((category) => (
