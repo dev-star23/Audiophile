@@ -20,7 +20,7 @@ const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
       <div
         ref={ref}
         className={cn(
-          "container mx-auto px-4",
+          "container mx-auto px-6",
           maxWidthClasses[maxWidth],
           className
         )}

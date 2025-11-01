@@ -138,6 +138,16 @@ h3 {
   text-transform: uppercase;
 }
 
+/* Allow Tailwind utilities to override header font sizes */
+h1[class],
+h2[class],
+h3[class],
+h4[class],
+h5[class],
+h6[class] {
+  font-size: revert;
+}
+
 h4 {
   font-family: var(--font-manrope);
   font-weight: 700; /* Bold */

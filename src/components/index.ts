@@ -20,7 +20,10 @@ export type { PageSectionProps } from "./PageSection"
 export { Container } from "./Container"
 export type { ContainerProps } from "./Container"
 
-// Re-export UI components for convenience
+export { default as Navbar } from "./Navbar"
+export { MobileMenu } from "./MobileMenu"
+export { TabletMenu } from "./TabletMenu"
+
 export { Button } from "@/components/ui/button"
 export { Input } from "@/components/ui/input"
 export { Label } from "@/components/ui/label"
