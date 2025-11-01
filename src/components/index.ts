@@ -33,6 +33,9 @@ export type { CategoryCardsProps } from "./CategoryCards"
 export { ProductsSection } from "./ProductsSection"
 export type { ProductsSectionProps } from "./ProductsSection"
 
+export { AboutSection } from "./AboutSection"
+export type { AboutSectionProps } from "./AboutSection"
+
 export { Button } from "@/components/ui/button"
 export { Input } from "@/components/ui/input"
 export { Label } from "@/components/ui/label"
