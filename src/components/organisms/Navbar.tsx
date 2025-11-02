@@ -6,6 +6,7 @@ import Image from "next/image"
 import { Container } from "../layout/Container"
 import { MobileMenu } from "./MobileMenu"
 import { TabletMenu } from "./TabletMenu"
+import { CartModal } from "./CartModal"
 
 const navigationLinks = [
   { label: "HOME", href: "/" },
@@ -16,9 +17,12 @@ const navigationLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false)
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev)
   const closeMenu = () => setIsMenuOpen(false)
+  const toggleCart = () => setIsCartOpen((prev) => !prev)
+  const closeCart = () => setIsCartOpen(false)
 
   return (
     <>
@@ -76,10 +80,11 @@ export default function Navbar() {
             </ul>
 
             {/* Cart Icon */}
-            <Link
-              href="/cart"
-              className="flex items-center hover:opacity-70 transition-opacity"
+            <button
+              onClick={toggleCart}
+              className="flex items-center hover:opacity-70 transition-opacity cursor-pointer"
               aria-label="Shopping cart"
+              aria-expanded={isCartOpen}
             >
               <Image
                 src="/images/shared/desktop/icon-cart.svg"
@@ -88,7 +93,7 @@ export default function Navbar() {
                 height={20}
                 className="h-5 w-auto"
               />
-            </Link>
+            </button>
           </div>
           <hr className=" opacity-10 hidden lg:block" />
         </Container>
@@ -99,6 +104,9 @@ export default function Navbar() {
 
       {/* Tablet Menu Modal */}
       <TabletMenu isOpen={isMenuOpen} onClose={closeMenu} />
+
+      {/* Cart Modal */}
+      <CartModal isOpen={isCartOpen} onClose={closeCart} />
     </>
   );
 }

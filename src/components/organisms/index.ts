@@ -23,3 +23,8 @@ export type { AboutSectionProps } from "./AboutSection"
 export { YouMayAlsoLike } from "./YouMayAlsoLike"
 export type { YouMayAlsoLikeProps } from "./YouMayAlsoLike"
 
+export { CartModal } from "./CartModal"
+export type { CartModalProps } from "./CartModal"
+
+export { CheckoutForm } from "./CheckoutForm"
+
