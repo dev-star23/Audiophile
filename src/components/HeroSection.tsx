@@ -48,7 +48,6 @@ export function HeroSection({
 
       {/* Content Container */}
       <Container maxWidth="2xl" className="relative z-10">
-        <hr className=" opacity-10 hidden lg:block"/>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[510px] md:min-h-[630px] lg:min-h-[632px] py-20 md:py-24 lg:py-0">
           {/* Left Column - Text Content */}
           <div className="text-center lg:text-left space-y-6 md:space-y-8 px-4 md:px-0">
