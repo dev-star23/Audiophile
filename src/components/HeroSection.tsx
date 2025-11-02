@@ -75,14 +75,12 @@ export function HeroSection({
 
             {/* Call-to-Action Button */}
             {ctaText && ctaHref && (
-              <div className="pt-4">
-                <Link href={ctaHref}>
-                  <Button variant="default" size="default">
-                    {ctaText}
-                  </Button>
-                </Link>
+             <div className="pt-4">
+                <Button asChild variant="default" size="default">
+                 <Link href={ctaHref}>{ctaText}</Link>
+                </Button>
               </div>
-            )}
+           )}
           </div>
 
           {/* Right Column - Product Image (Desktop Only) */}
