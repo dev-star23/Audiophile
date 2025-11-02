@@ -2,8 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Container } from "./Container"
-import { Button } from "./ui/button"
+import { Container } from "../layout/Container"
+import { Button } from "../atoms/Button"
 import { cn } from "@/lib/utils"
 
 export interface ProductsSectionProps {

@@ -2,8 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "./ui/button"
-import { Container } from "./Container"
+import { Button } from "../atoms/Button"
+import { Container } from "../layout/Container"
 
 export interface HeroSectionProps {
   label?: string

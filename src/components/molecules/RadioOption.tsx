@@ -1,6 +1,6 @@
 import * as React from "react"
-import { RadioGroupItem, RadioGroupCard } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+import { RadioGroupItem, RadioGroupCard } from "./RadioGroup"
+import { Label } from "../atoms/Label"
 import { cn } from "@/lib/utils"
 
 export interface RadioOptionProps {

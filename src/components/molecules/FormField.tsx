@@ -9,10 +9,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { RadioGroup, RadioGroupItem, RadioGroupCard } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { NumberInput } from "@/components/ui/number-input"
+import { Input } from "../atoms/Input"
+import { RadioGroup, RadioGroupItem, RadioGroupCard } from "./RadioGroup"
+import { Label } from "../atoms/Label"
+import { NumberInput } from "../atoms/NumberInput"
 import type { Control, FieldPath, FieldValues } from "react-hook-form"
 
 interface BaseFormFieldProps<T extends FieldValues> {

@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Container } from "./Container"
+import { Container } from "../layout/Container"
 import { cn } from "@/lib/utils"
 
 interface MobileMenuProps {
