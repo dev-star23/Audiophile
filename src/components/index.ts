@@ -1,6 +1,6 @@
 /**
  * Component Exports
- * 
+ *
  * Central export file for all reusable components
  */
 
@@ -20,7 +20,25 @@ export type { PageSectionProps } from "./PageSection"
 export { Container } from "./Container"
 export type { ContainerProps } from "./Container"
 
-// Re-export UI components for convenience
+export { default as Navbar } from "./Navbar"
+export { MobileMenu } from "./MobileMenu"
+export { TabletMenu } from "./TabletMenu"
+
+export { HeroSection } from "./HeroSection"
+export type { HeroSectionProps } from "./HeroSection"
+
+export { CategoryCards } from "./CategoryCards"
+export type { CategoryCardsProps } from "./CategoryCards"
+
+export { ProductsSection } from "./ProductsSection"
+export type { ProductsSectionProps } from "./ProductsSection"
+
+export { AboutSection } from "./AboutSection"
+export type { AboutSectionProps } from "./AboutSection"
+
+export { Footer } from "./Footer"
+export type { FooterProps } from "./Footer"
+
 export { Button } from "@/components/ui/button"
 export { Input } from "@/components/ui/input"
 export { Label } from "@/components/ui/label"
