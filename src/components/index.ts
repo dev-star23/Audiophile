@@ -30,6 +30,12 @@ export type { HeroSectionProps } from "./HeroSection"
 export { CategoryCards } from "./CategoryCards"
 export type { CategoryCardsProps } from "./CategoryCards"
 
+export { CategoryHeader } from "./CategoryHeader"
+export type { CategoryHeaderProps } from "./CategoryHeader"
+
+export { ProductCard } from "./ProductCard"
+export type { ProductCardProps } from "./ProductCard"
+
 export { ProductsSection } from "./ProductsSection"
 export type { ProductsSectionProps } from "./ProductsSection"
 

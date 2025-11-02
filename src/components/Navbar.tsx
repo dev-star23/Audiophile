@@ -22,7 +22,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-foreground text-white" role="navigation" aria-label="Main navigation">
+      <nav
+        className="bg-foreground text-white"
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <Container>
           <div className="flex items-center justify-between h-[90px]">
             {/* Hamburger Menu Button - Mobile & Tablet */}
@@ -86,14 +90,15 @@ export default function Navbar() {
               />
             </Link>
           </div>
+          <hr className=" opacity-10 hidden lg:block" />
         </Container>
       </nav>
 
       {/* Mobile Menu Modal */}
       <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
-      
+
       {/* Tablet Menu Modal */}
       <TabletMenu isOpen={isMenuOpen} onClose={closeMenu} />
     </>
-  )
+  );
 }
