@@ -20,3 +20,6 @@ export type { ProductsSectionProps } from "./ProductsSection"
 export { AboutSection } from "./AboutSection"
 export type { AboutSectionProps } from "./AboutSection"
 
+export { YouMayAlsoLike } from "./YouMayAlsoLike"
+export type { YouMayAlsoLikeProps } from "./YouMayAlsoLike"
+

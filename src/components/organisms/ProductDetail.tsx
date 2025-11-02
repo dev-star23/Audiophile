@@ -47,7 +47,7 @@ export function ProductDetail({ product, className }: ProductDetailProps) {
 
         {/* Main Product Section */}
         <section className="mb-16 md:mb-24 lg:mb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-32 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-32 items-center">
             {/* Product Image */}
             <div className="relative w-full aspect-square bg-muted rounded-lg overflow-hidden">
               {/* Mobile Image */}
@@ -84,7 +84,7 @@ export function ProductDetail({ product, className }: ProductDetailProps) {
               )}
 
               {/* Product Title */}
-              <h1 className="text-[28px] md:text-[40px] font-bold leading-[32px] md:leading-[44px] tracking-[1px] md:tracking-[1.5px] uppercase text-foreground">
+              <h1 className="text-[28px] md:text-[40px] font-bold leading-8 md:leading-11 tracking-[1px] md:tracking-[1.5px] uppercase text-foreground">
                 {product.title}
               </h1>
 
@@ -99,7 +99,7 @@ export function ProductDetail({ product, className }: ProductDetailProps) {
               </p>
 
               {/* Add to Cart Section */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col lg:flex-row gap-4 pt-4">
                 <NumberInput
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value) || 1)}
@@ -124,7 +124,7 @@ export function ProductDetail({ product, className }: ProductDetailProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-20 lg:gap-32">
             {/* Features */}
             <div>
-              <h2 className="text-[24px] md:text-[32px] font-bold leading-[36px] tracking-[0.9px] uppercase text-foreground mb-6 md:mb-8">
+              <h2 className="text-[24px] md:text-[32px] font-bold leading-9 tracking-[0.9px] uppercase text-foreground mb-6 md:mb-8">
                 FEATURES
               </h2>
               <div className="space-y-4">
@@ -141,7 +141,7 @@ export function ProductDetail({ product, className }: ProductDetailProps) {
 
             {/* In The Box */}
             <div>
-              <h2 className="text-[24px] md:text-[32px] font-bold leading-[36px] tracking-[0.9px] uppercase text-foreground mb-6 md:mb-8">
+              <h2 className="text-[24px] md:text-[32px] font-bold leading-9 tracking-[0.9px] uppercase text-foreground mb-6 md:mb-8">
                 IN THE BOX
               </h2>
               <ul className="space-y-2">

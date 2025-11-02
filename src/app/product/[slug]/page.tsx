@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { AboutSection, CategoryCards, ProductDetail } from "@/components"
+import { AboutSection, CategoryCards, ProductDetail, YouMayAlsoLike } from "@/components"
 import { getProductBySlug } from "@/data/products"
 
 interface ProductPageProps {
@@ -20,9 +20,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <main>
       <ProductDetail product={product} />
+      <YouMayAlsoLike currentProduct={product} />
       <CategoryCards />
       <AboutSection />
     </main>
-  )
+  );
 }
 
