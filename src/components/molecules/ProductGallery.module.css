@@ -1,0 +1,10 @@
+.productGallery {
+  grid-template-areas: "a" "b" "c";
+}
+
+@media (min-width: 768px) {
+  .productGallery {
+    grid-template-areas: "a c" "b c";
+  }
+}
+

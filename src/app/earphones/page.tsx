@@ -1,19 +1,18 @@
 import { AboutSection, CategoryHeader, ProductCard, CategoryCards } from "@/components"
+import { earphones as earphonesData } from "@/data/products"
 
-const earphones = [
-  {
-    new: true,
-    title: "YX1 WIRELESS EARPHONES",
-    description: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
-    img: "/images/product-yx1-earphones/desktop/image-category-page-preview.jpg",
-    imgMobile: "/images/product-yx1-earphones/mobile/image-category-page-preview.jpg",
-    imgTablet: "/images/product-yx1-earphones/tablet/image-category-page-preview.jpg",
-    imgDesktop: "/images/product-yx1-earphones/desktop/image-category-page-preview.jpg",
-    imgAlt: "YX1 Wireless Earphones",
-    imagePos: "left" as const,
-    ctaHref: "/product/yx1-earphones",
-  },
-]
+const earphones = earphonesData.map((product, index) => ({
+  new: product.new,
+  title: product.title,
+  description: product.description,
+  img: product.img,
+  imgMobile: product.imgMobile,
+  imgTablet: product.imgTablet,
+  imgDesktop: product.imgDesktop,
+  imgAlt: product.imgAlt,
+  imagePos: (index % 2 === 0 ? "left" : "right") as "left" | "right",
+  ctaHref: `/product/${product.slug}`,
+}))
 
 export default function EarphonesPage() {
   return (
