@@ -24,8 +24,8 @@ export function YouMayAlsoLike({ currentProduct, className }: YouMayAlsoLikeProp
   let recommendedProducts: Product[] = []
 
   if (sameCategoryProducts.length >= 3) {
-    // If we have 3+ products in the same category, show ALL of them
-    recommendedProducts = sameCategoryProducts
+    // If we have 3+ products in the same category, show the first 3
+    recommendedProducts = sameCategoryProducts.slice(0, 3);
   } else {
     // Start with same category products
     recommendedProducts = [...sameCategoryProducts]
