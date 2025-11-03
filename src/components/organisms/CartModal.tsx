@@ -6,60 +6,20 @@ import Link from "next/link"
 import { Button } from "../atoms/Button"
 import { NumberInput } from "../atoms/NumberInput"
 import { cn } from "@/lib/utils"
-
-interface CartItem {
-  id: string
-  slug: string
-  name: string
-  price: number
-  quantity: number
-  image: string
-  imageAlt: string
-}
+import type { CartItem } from "@/context/CartContext"
 
 export interface CartModalProps {
   isOpen: boolean
   onClose: () => void
-  items?: CartItem[]
+  items: CartItem[]
   onRemoveAll?: () => void
   onUpdateQuantity?: (id: string, quantity: number) => void
 }
 
-// Static cart data for now
-const staticCartItems: CartItem[] = [
-  {
-    id: "xx99-mark-two",
-    slug: "xx99-mark-two-headphones",
-    name: "XX99 MK II",
-    price: 2999,
-    quantity: 1,
-    image: "/images/shared/desktop/image-xx99-mark-two-headphones.jpg",
-    imageAlt: "XX99 Mark II Headphones",
-  },
-  {
-    id: "xx59",
-    slug: "xx59-headphones",
-    name: "XX59",
-    price: 899,
-    quantity: 2,
-    image: "/images/shared/desktop/image-xx59-headphones.jpg",
-    imageAlt: "XX59 Headphones",
-  },
-  {
-    id: "yx1",
-    slug: "yx1-earphones",
-    name: "YX1",
-    price: 599,
-    quantity: 1,
-    image: "/images/cart/image-yx1-earphones.jpg",
-    imageAlt: "YX1 Earphones",
-  },
-]
-
 export function CartModal({
   isOpen,
   onClose,
-  items = staticCartItems,
+  items,
   onRemoveAll,
   onUpdateQuantity,
 }: CartModalProps) {
@@ -97,9 +57,9 @@ export function CartModal({
 
   return (
     <>
-      {/* Backdrop/Overlay - Only on mobile */}
+      {/* Backdrop/Overlay - All screen sizes */}
       <div
-        className="fixed inset-0 bg-black/50 z-40 md:hidden"
+        className="fixed inset-0 bg-black/50 z-40"
         onClick={onClose}
         aria-hidden="true"
       />

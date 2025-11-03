@@ -9,6 +9,7 @@ import { Container } from "../layout/Container"
 import { ProductGallery } from "../molecules/ProductGallery"
 import { cn } from "@/lib/utils"
 import type { Product } from "@/data/products"
+import { useCart } from "@/context/CartContext"
 
 export interface ProductDetailProps {
   product: Product
@@ -17,10 +18,20 @@ export interface ProductDetailProps {
 
 export function ProductDetail({ product, className }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
+  const { addItem } = useCart()
 
   const handleAddToCart = () => {
-    // TODO: Implement cart functionality
-    console.log(`Added ${quantity} ${product.title} to cart`)
+    addItem(
+      {
+        id: product.id,
+        slug: product.slug,
+        name: product.title,
+        price: product.price,
+        image: product.img || product.imgDesktop,
+        imageAlt: product.imgAlt,
+      },
+      quantity
+    )
     // Reset quantity after adding to cart
     setQuantity(1)
   }
@@ -104,7 +115,7 @@ export function ProductDetail({ product, className }: ProductDetailProps) {
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value) || 1)}
                   min={1}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 />
                 <Button
                   onClick={handleAddToCart}

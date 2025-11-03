@@ -19,4 +19,6 @@ export type { CategoryHeaderProps } from "./CategoryHeader"
 export { ProductGallery } from "./ProductGallery"
 export type { ProductGalleryProps, CategoryImage } from "./ProductGallery"
 
-// Note: ProductDetail moved to organisms/
+export { ProductCardSkeleton, YouMayAlsoLikeSkeleton } from "./ProductCardSkeleton"
+export type { ProductCardSkeletonProps, YouMayAlsoLikeSkeletonProps } from "./ProductCardSkeleton"
+
