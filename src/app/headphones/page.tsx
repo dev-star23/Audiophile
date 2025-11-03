@@ -3,6 +3,7 @@ import { AboutSection, CategoryHeader, ProductCard, CategoryCards } from "@/comp
 import { transformProduct } from "@/lib/convex"
 import { getConvexClient } from "@/lib/convex-server"
 import type { Doc } from "../../../convex/_generated/dataModel"
+export const dynamic = "force-dynamic"
 
 export default async function HeadphonesPage() {
   const client = getConvexClient()
