@@ -17,24 +17,45 @@ export function ProductsSection({ className }: ProductsSectionProps) {
         <div className="space-y-6 md:space-y-8">
           {/* ZX9 Speaker - Orange background with pattern */}
           <div className="relative bg-primary rounded-lg overflow-hidden">
-            {/* Pattern circles background - Mobile/Tablet centered */}
+            {/* Pattern circles background - Mobile centered */}
             <div
-              className="absolute inset-0 z-0 bg-no-repeat bg-contain lg:hidden"
+              className="absolute inset-0 z-0 bg-no-repeat bg-contain md:hidden"
               style={{
-                backgroundImage: 'url(/images/home/desktop/pattern-circles.svg)',
-                backgroundPosition: 'center',
+                backgroundImage:
+                  "url(/images/home/desktop/pattern-circles.svg)",
+                backgroundPosition: "center",
+                width: "704px",
+                height: "1044px",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+            {/* Pattern circles background - Tablet centered */}
+            <div
+              className="absolute inset-0 z-0 bg-no-repeat bg-contain hidden md:block lg:hidden"
+              style={{
+                backgroundImage:
+                  "url(/images/home/desktop/pattern-circles.svg)",
+                backgroundPosition: "center",
+                width: "944px",
+                height: "944px",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
               }}
             />
             {/* Pattern circles background - Desktop left */}
             <div
-              className="absolute z-0 bg-no-repeat hidden lg:block"
+              className="absolute z-0 bg-no-repeat hidden lg:block top-[0%] left-[20%]"
               style={{
-                backgroundImage: 'url(/images/home/desktop/pattern-circles.svg)',
-                backgroundSize: '944px 944px',
-                width: '944px',
-                height: '944px',
-                left: '-15%',
-                bottom: '-15%',
+                backgroundImage:
+                  "url(/images/home/desktop/pattern-circles.svg)",
+                backgroundSize: "944px 944px",
+                width: "944px",
+                height: "944px",
+                left: "-11%",
+                bottom: "0%",
               }}
             />
 
@@ -63,14 +84,20 @@ export function ProductsSection({ className }: ProductsSectionProps) {
                   {/* Text Content */}
                   <div className="space-y-6 text-white">
                     <h2 className="text-[36px] md:text-[56px] font-bold leading-[40px] md:leading-[58px] tracking-[1.3px] md:tracking-[2px] uppercase">
-                      ZX9<br />SPEAKER
+                      ZX9
+                      <br />
+                      SPEAKER
                     </h2>
                     <p className="text-[15px] leading-[25px] opacity-75 max-w-[280px] md:max-w-[350px] mx-auto">
-                      Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
+                      Upgrade to premium speakers that are phenomenally built to
+                      deliver truly remarkable sound.
                     </p>
                     <div>
                       <Link href="/product/zx9-speaker">
-                        <Button variant="default" className="bg-foreground hover:bg-foreground/90">
+                        <Button
+                          variant="default"
+                          className="bg-foreground hover:bg-foreground/90"
+                        >
                           SEE PRODUCT
                         </Button>
                       </Link>
@@ -80,7 +107,7 @@ export function ProductsSection({ className }: ProductsSectionProps) {
 
                 {/* Desktop: Two-column layout (image left, text right) */}
                 <div className="hidden lg:flex items-center justify-center lg:justify-start">
-                  <div className="relative w-full max-w-[410px] aspect-square">
+                  <div className=" absolute w-full max-w-[415px] -bottom-3 left-[10%] aspect-square">
                     <Image
                       src="/images/home/desktop/image-speaker-zx9.png"
                       alt="ZX9 Speaker"
@@ -93,16 +120,22 @@ export function ProductsSection({ className }: ProductsSectionProps) {
                   </div>
                 </div>
 
-                <div className="hidden lg:flex flex-col items-start text-left space-y-8 text-white">
+                <div className="hidden lg:flex flex-col items-start lg:ml-16 text-left space-y-8 text-white">
                   <h2 className="text-[56px] font-bold leading-[58px] tracking-[2px] uppercase">
-                    ZX9<br />SPEAKER
+                    ZX9
+                    <br />
+                    SPEAKER
                   </h2>
                   <p className="text-[15px] leading-[25px] opacity-75 max-w-[350px]">
-                    Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
+                    Upgrade to premium speakers that are phenomenally built to
+                    deliver truly remarkable sound.
                   </p>
                   <div>
                     <Link href="/product/zx9-speaker">
-                      <Button variant="default" className="bg-foreground hover:bg-foreground/90">
+                      <Button
+                        variant="default"
+                        className="bg-foreground hover:bg-foreground/90"
+                      >
                         SEE PRODUCT
                       </Button>
                     </Link>
@@ -149,7 +182,10 @@ export function ProductsSection({ className }: ProductsSectionProps) {
               </h2>
               <div className="flex justify-start">
                 <Link href="/product/zx7-speaker">
-                  <Button variant="outline" className="border-foreground bg-transparent hover:bg-foreground hover:text-background">
+                  <Button
+                    variant="outline"
+                    className="border-foreground bg-transparent hover:bg-foreground hover:text-background"
+                  >
                     SEE PRODUCT
                   </Button>
                 </Link>
@@ -204,6 +240,6 @@ export function ProductsSection({ className }: ProductsSectionProps) {
         </div>
       </Container>
     </section>
-  )
+  );
 }
 

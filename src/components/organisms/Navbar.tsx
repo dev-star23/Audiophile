@@ -7,6 +7,7 @@ import { Container } from "../layout/Container"
 import { MobileMenu } from "./MobileMenu"
 import { TabletMenu } from "./TabletMenu"
 import { CartModal } from "./CartModal"
+import { useCart } from "@/context/CartContext"
 
 const navigationLinks = [
   { label: "HOME", href: "/" },
@@ -18,6 +19,7 @@ const navigationLinks = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const { items, updateQuantity, removeAll, totalItems } = useCart()
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev)
   const closeMenu = () => setIsMenuOpen(false)
@@ -82,7 +84,7 @@ export default function Navbar() {
             {/* Cart Icon */}
             <button
               onClick={toggleCart}
-              className="flex items-center hover:opacity-70 transition-opacity cursor-pointer"
+              className="flex items-center hover:opacity-70 transition-opacity cursor-pointer relative"
               aria-label="Shopping cart"
               aria-expanded={isCartOpen}
             >
@@ -93,6 +95,11 @@ export default function Navbar() {
                 height={20}
                 className="h-5 w-auto"
               />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
             </button>
           </div>
           <hr className=" opacity-10 hidden lg:block" />
@@ -106,7 +113,13 @@ export default function Navbar() {
       <TabletMenu isOpen={isMenuOpen} onClose={closeMenu} />
 
       {/* Cart Modal */}
-      <CartModal isOpen={isCartOpen} onClose={closeCart} />
+      <CartModal 
+        isOpen={isCartOpen} 
+        onClose={closeCart}
+        items={items}
+        onRemoveAll={removeAll}
+        onUpdateQuantity={updateQuantity}
+      />
     </>
   );
 }
