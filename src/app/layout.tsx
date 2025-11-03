@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
 import { Navbar, Footer } from "@/components";
+import { ConvexClientProvider } from "@/lib/convex-client";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -29,11 +30,13 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <Navbar />
-        <div className="flex-1">
-          {children}
-        </div>
-        <Footer />
+        <ConvexClientProvider>
+          <Navbar />
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
+        </ConvexClientProvider>
       </body>
     </html>
   );

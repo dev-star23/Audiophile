@@ -2,11 +2,14 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useQuery } from "convex/react"
+import { api } from "../../../convex/_generated/api"
 import { Button } from "../atoms/Button"
 import { Container } from "../layout/Container"
+import { YouMayAlsoLikeSkeleton } from "../molecules/ProductCardSkeleton"
 import { cn } from "@/lib/utils"
 import type { Product } from "@/data/products"
-import { allProducts } from "@/data/products"
+import { transformProduct } from "@/lib/convex"
 
 export interface YouMayAlsoLikeProps {
   currentProduct: Product
@@ -14,6 +17,14 @@ export interface YouMayAlsoLikeProps {
 }
 
 export function YouMayAlsoLike({ currentProduct, className }: YouMayAlsoLikeProps) {
+  // Fetch all products from Convex
+  const convexProducts = useQuery(api.products.getAll)
+
+  if (convexProducts === undefined) {
+    return <YouMayAlsoLikeSkeleton className={className} />
+  }
+  const allProducts = convexProducts.map(transformProduct)
+
   // Get products from the same category, excluding the current product
   const sameCategoryProducts = allProducts.filter(
     (product) =>

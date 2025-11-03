@@ -1,21 +1,31 @@
+import { api } from "../../../convex/_generated/api"
 import { AboutSection, CategoryHeader, ProductCard, CategoryCards } from "@/components"
-import { speakers as speakersData } from "@/data/products"
+import { transformProduct } from "@/lib/convex"
+import { getConvexClient } from "@/lib/convex-server"
+import type { Doc } from "../../../convex/_generated/dataModel"
 
-// Map product data to ProductCard format
-const speakers = speakersData.map((product, index) => ({
-  new: product.new,
-  title: product.title,
-  description: product.description,
-  img: product.img,
-  imgMobile: product.imgMobile,
-  imgTablet: product.imgTablet,
-  imgDesktop: product.imgDesktop,
-  imgAlt: product.imgAlt,
-  imagePos: (index % 2 === 0 ? "left" : "right") as "left" | "right",
-  ctaHref: `/product/${product.slug}`,
-}))
+export default async function SpeakersPage() {
+  const client = getConvexClient()
+  const convexProducts = await client.query(api.products.getByCategory, { category: "speakers" }) || []
 
-export default function SpeakersPage() {
+  const speakers = (convexProducts || []).map(
+    (convexProduct: Doc<"products">, index: number) => {
+      const product = transformProduct(convexProduct);
+      return {
+        new: product.new,
+        title: product.title,
+        description: product.description,
+        img: product.img,
+        imgMobile: product.imgMobile,
+        imgTablet: product.imgTablet,
+        imgDesktop: product.imgDesktop,
+        imgAlt: product.imgAlt,
+        imagePos: (index % 2 === 0 ? "left" : "right") as "left" | "right",
+        ctaHref: `/product/${product.slug}`,
+      };
+    }
+  );
+
   return (
     <main>
       <CategoryHeader categoryName="SPEAKERS" />
