@@ -41,8 +41,11 @@ export async function POST(request: NextRequest) {
     // Generate order number
     const orderNumber = `AUD-${Date.now()}-${Math.random().toString(36).substring(2, 9).toUpperCase()}`
 
+    // Get base URL for images (from env or use default)
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL || "https://audiophile-rho.vercel.app"
+
     // Format email HTML
-    const emailHTML = generateEmailHTML(orderData, orderNumber)
+    const emailHTML = generateEmailHTML(orderData, orderNumber, baseUrl)
 
     // Check for required SMTP environment variables
     const smtpHost = process.env.SMTP_HOST
@@ -93,7 +96,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function generateEmailHTML(orderData: OrderData, orderNumber: string): string {
+function generateEmailHTML(orderData: OrderData, orderNumber: string, baseUrl: string): string {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -101,6 +104,17 @@ function generateEmailHTML(orderData: OrderData, orderNumber: string): string {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(price)
+  }
+
+  // Convert relative image paths to absolute URLs
+  const getAbsoluteImageUrl = (imagePath: string): string => {
+    // If already an absolute URL, return as is
+    if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+      return imagePath
+    }
+    // Remove leading slash if present and add base URL
+    const cleanPath = imagePath.startsWith("/") ? imagePath : `/${imagePath}`
+    return `${baseUrl}${cleanPath}`
   }
 
   return `
@@ -164,11 +178,22 @@ function generateEmailHTML(orderData: OrderData, orderNumber: string): string {
             <td style="padding: 0 40px;">
               <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f1f1f1; border-radius: 8px; overflow: hidden;">
                 ${orderData.items.map(
-                  (item) => `
+                  (item) => {
+                    const imageUrl = getAbsoluteImageUrl(item.image)
+                    return `
                 <tr>
                   <td style="padding: 20px;">
                     <table role="presentation" style="width: 100%; border-collapse: collapse;">
                       <tr>
+                        <!-- Product Image -->
+                        <td style="vertical-align: middle; width: 80px; padding-right: 16px;">
+                          <img 
+                            src="${imageUrl}" 
+                            alt="${item.imageAlt || item.name}" 
+                            style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px; background-color: #ffffff; display: block;"
+                          />
+                        </td>
+                        <!-- Product Info -->
                         <td style="vertical-align: middle; width: 100%;">
                           <p style="margin: 0 0 5px; font-size: 15px; font-weight: bold; color: #101010;">
                             ${item.name}
@@ -177,6 +202,7 @@ function generateEmailHTML(orderData: OrderData, orderNumber: string): string {
                             ${formatPrice(item.price)}
                           </p>
                         </td>
+                        <!-- Quantity -->
                         <td style="text-align: right; vertical-align: middle; padding-left: 20px;">
                           <p style="margin: 0; font-size: 15px; font-weight: bold; color: #6b6b6b;">
                             x${item.quantity}
@@ -187,6 +213,7 @@ function generateEmailHTML(orderData: OrderData, orderNumber: string): string {
                   </td>
                 </tr>
                 `
+                  }
                 ).join("")}
               </table>
             </td>
