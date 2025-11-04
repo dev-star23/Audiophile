@@ -30,8 +30,11 @@ if (!CONVEX_URL) {
   process.exit(1);
 }
 
+// TypeScript now knows CONVEX_URL is defined after the check above
+const convexUrl: string = CONVEX_URL;
+
 async function seed() {
-  const client = new ConvexHttpClient(CONVEX_URL);
+  const client = new ConvexHttpClient(convexUrl);
   
   console.log("Seeding products to Convex...");
   console.log(`Found ${dbData.data.length} products`);
