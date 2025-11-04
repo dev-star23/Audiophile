@@ -190,7 +190,7 @@ function generateEmailHTML(orderData: OrderData, orderNumber: string, baseUrl: s
                           <img 
                             src="${imageUrl}" 
                             alt="${item.imageAlt || item.name}" 
-                            style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px; background-color: #ffffff; display: block;"
+                            style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px; background-color: #ffffff; display: block; border: none;"
                           />
                         </td>
                         <!-- Product Info -->
