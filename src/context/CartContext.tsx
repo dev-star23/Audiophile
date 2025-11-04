@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState, useRef, ReactNode } from "react"
+import { createContext, useContext, useEffect, useState, ReactNode } from "react"
 
 export interface CartItem {
   id: string
@@ -27,8 +27,13 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 const STORAGE_KEY = "audiophile-cart"
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  // Use lazy initialization to load from localStorage without triggering effect warning
+  // Use lazy initialization with browser check to load from localStorage
+  // This avoids calling setState in an effect and works with SSR
   const [items, setItems] = useState<CartItem[]>(() => {
+    // Only access localStorage in the browser
+    if (typeof window === "undefined") {
+      return []
+    }
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) {
@@ -39,10 +44,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
     return []
   })
-  const isInitializedRef = useRef(true)
 
+  // Save to localStorage whenever items change
   useEffect(() => {
-    if (isInitializedRef.current) {
+    if (typeof window !== "undefined") {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
       } catch (error) {
