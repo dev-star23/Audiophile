@@ -13,6 +13,7 @@ import fs from "fs";
 import { resolve } from "path";
 import { ConvexHttpClient } from "convex/browser";
 import { config } from "dotenv";
+import { api } from "../convex/_generated/api";
 
 // Load environment variables from .env.local
 config({ path: resolve(process.cwd(), ".env.local") });
@@ -40,7 +41,7 @@ async function seed() {
   console.log(`Found ${dbData.data.length} products`);
 
   try {
-    const result = await client.mutation("seed:seedProducts", {
+    const result = await client.mutation(api.seed.seedProducts, {
       products: dbData.data,
     });
 
