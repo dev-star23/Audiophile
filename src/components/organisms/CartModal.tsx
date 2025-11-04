@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
-import Link from "next/link"
 import { Button } from "../atoms/Button"
 import { NumberInput } from "../atoms/NumberInput"
 import { cn } from "@/lib/utils"
@@ -23,6 +23,7 @@ export function CartModal({
   onRemoveAll,
   onUpdateQuantity,
 }: CartModalProps) {
+  const router = useRouter()
 
   // Close on Escape key
   useEffect(() => {
@@ -154,13 +155,15 @@ export function CartModal({
             {/* Checkout Button */}
             <div className="px-6 pb-6">
               <Button
-                asChild
                 variant="default"
                 size="default"
                 className="w-full"
-                onClick={onClose}
+                onClick={() => {
+                  onClose()
+                  router.push("/checkout")
+                }}
               >
-                <Link href="/checkout">CHECKOUT</Link>
+                CHECKOUT
               </Button>
             </div>
           </>
