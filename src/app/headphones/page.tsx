@@ -9,7 +9,7 @@ export default async function HeadphonesPage() {
   const client = getConvexClient()
   const convexProducts = await client.query(api.products.getByCategory, { category: "headphones" }) || []
 
-  const headphones = (convexProducts || []).map((convexProduct: Doc<"products">, index: number) => {
+  const headphones = (convexProducts || []).reverse().map((convexProduct: Doc<"products">, index: number) => {
     const product = transformProduct(convexProduct)
     return {
       new: product.new,
