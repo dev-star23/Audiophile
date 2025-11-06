@@ -20,10 +20,11 @@ export const getBySlug = query({
 export const getByCategory = query({
   args: { category: v.union(v.literal("headphones"), v.literal("speakers"), v.literal("earphones")) },
   handler: async (ctx, args) => {
-    return await ctx.db
+    return (await ctx.db
       .query("products")
       .withIndex("by_category", (q) => q.eq("category", args.category))
-      .collect();
+      .collect())
+      .reverse();
   },
 });
 
